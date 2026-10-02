@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#08080a" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>New Golden Brass Band</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #08080a; --bg-elevated: #101014; --surface: #16161c; --panel: #1a1a22;
+      --glass: rgba(18,18,24,0.72); --glass-border: rgba(255,255,255,0.07);
+      --text: #f7f7f9; --text-2: #a4a4ae; --text-3: #6c6c78; --text-4: #4a4a54;
+      --gold: #d4af37; --gold-light: #e8c65a; --gold-dark: #a8862a; --gold-glow: rgba(212,175,55,0.35);
+      --green: #34d399; --green-bg: rgba(52,211,153,0.1);
+      --red: #f87171; --red-bg: rgba(248,113,113,0.1);
+      --amber: #fbbf24; --amber-bg: rgba(251,191,36,0.1);
+      --blue: #60a5fa; --blue-bg: rgba(96,165,250,0.1);
+      --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px; --radius-pill: 999px;
+      --shadow-md: 0 12px 32px -8px rgba(0,0,0,0.5); --shadow-lg: 0 30px 60px -20px rgba(0,0,0,0.7);
+      --shadow-gold: 0 12px 40px -10px rgba(212,175,55,0.4);
+      --ease: cubic-bezier(0.16,1,0.3,1); --sidebar-w: 260px; --header-h: 64px;
+    }
+    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+    html { -webkit-text-size-adjust:100%; }
+    body { font-family:'Inter',system-ui,-apple-system,sans-serif; font-size:15px; line-height:1.55;
+      color:var(--text); background:var(--bg); min-height:100vh; overflow-x:hidden;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    body.no-scroll { overflow:hidden; }
+    body::before { content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+      background: radial-gradient(ellipse 60% 50% at 10% 0%, rgba(212,175,55,0.06), transparent 55%),
+                  radial-gradient(ellipse 50% 40% at 90% 100%, rgba(80,80,160,0.08), transparent 55%); }
+    img,video { max-width:100%; height:auto; display:block; }
+    button,input,select,textarea { font:inherit; color:inherit; }
+    button { cursor:pointer; background:none; border:none; }
+    a { color:inherit; text-decoration:none; }
+    ul { list-style:none; }
+    ::-webkit-scrollbar { width:8px; height:8px; }
+    ::-webkit-scrollbar-track { background:var(--bg); }
+    ::-webkit-scrollbar-thumb { background:#2a2a34; border-radius:4px; }
+    :focus-visible { outline:2px solid var(--gold); outline-offset:2px; border-radius:4px; }
+
+    .app { display:flex; min-height:100vh; position:relative; z-index:2; }
+    .sidebar { width:var(--sidebar-w); background:rgba(14,14,18,0.9);
+      -webkit-backdrop-filter:blur(24px) saturate(140%); backdrop-filter:blur(24px) saturate(140%);
+      border-right:1px solid var(--glass-border); display:flex; flex-direction:column;
+      position:fixed; top:0; left:0; bottom:0; z-index:100; transform:translateX(-100%);
+      transition:transform 0.4s var(--ease); overflow-y:auto; }
+    .sidebar.open { transform:translateX(0); }
+    @media (min-width:960px) { .sidebar { transform:translateX(0); } .main { margin-left:var(--sidebar-w); } }
+
+    .sidebar-brand { display:flex; align-items:center; gap:12px; padding:20px 20px 18px;
+      border-bottom:1px solid var(--glass-border); flex-shrink:0; }
+    .sidebar-mark { width:40px; height:40px; border-radius:12px;
+      background:linear-gradient(135deg,var(--gold-light),var(--gold-dark)); display:grid;
+      place-items:center; font-size:0.85rem; font-weight:800; color:#0a0a0c; flex-shrink:0;
+      box-shadow:0 4px 16px -4px var(--gold-glow); }
+    .sidebar-brand-text { line-height:1.2; min-width:0; }
+    .sidebar-brand-text strong { display:block; font-size:0.92rem; font-weight:700;
+      letter-spacing:-0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .sidebar-brand-text small { display:block; font-size:0.6rem; font-weight:500;
+      letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); opacity:0.9; }
+
+    .sidebar-nav { flex:1; padding:16px 12px; display:flex; flex-direction:column; gap:2px; }
+    .nav-section-label { font-size:0.62rem; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; color:var(--text-4); padding:16px 12px 8px; }
+    .nav-item { display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px;
+      color:var(--text-2); font-size:0.88rem; font-weight:500; transition:all 0.25s var(--ease);
+      position:relative; width:100%; text-align:left; -webkit-tap-highlight-color:transparent; }
+    .nav-item:hover { background:rgba(255,255,255,0.04); color:var(--text); }
+    .nav-item.active { background:linear-gradient(135deg,rgba(212,175,55,0.14),rgba(212,175,55,0.04));
+      color:var(--gold); font-weight:600; }
+    .nav-item.active::before { content:''; position:absolute; left:0; top:20%; bottom:20%; width:3px;
+      border-radius:0 3px 3px 0; background:var(--gold); }
+    .nav-icon { width:20px; height:20px; display:grid; place-items:center; font-size:1rem; flex-shrink:0; opacity:0.9; }
+    .nav-badge { margin-left:auto; min-width:22px; height:22px; padding:0 7px; border-radius:var(--radius-pill);
+      background:var(--red); color:white; font-size:0.68rem; font-weight:700; display:grid;
+      place-items:center; flex-shrink:0; }
+    .nav-badge.hidden { display:none; }
+    .sidebar-footer { padding:16px; border-top:1px solid var(--glass-border); flex-shrink:0; }
+    .user-chip { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px;
+      background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); margin-bottom:10px; min-width:0; }
+    .user-avatar { width:34px; height:34px; border-radius:50%;
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark)); display:grid;
+      place-items:center; font-size:0.8rem; font-weight:700; color:#0a0a0c; flex-shrink:0; }
+    .user-info { min-width:0; flex:1; }
+    .user-info strong { display:block; font-size:0.82rem; font-weight:600;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .user-info small { display:block; font-size:0.7rem; color:var(--text-3);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+    .main { flex:1; min-width:0; display:flex; flex-direction:column; position:relative; }
+    .topbar { height:var(--header-h); display:flex; align-items:center; gap:14px; padding:0 20px;
+      position:sticky; top:0; z-index:50; background:rgba(8,8,10,0.75);
+      -webkit-backdrop-filter:blur(20px) saturate(140%); backdrop-filter:blur(20px) saturate(140%);
+      border-bottom:1px solid var(--glass-border); }
+    @media (min-width:960px) { .topbar { padding:0 32px; } }
+    .menu-btn { width:40px; height:40px; border-radius:10px; background:rgba(255,255,255,0.05);
+      border:1px solid var(--glass-border); display:grid; place-items:center; flex-shrink:0; }
+    @media (min-width:960px) { .menu-btn { display:none; } }
+    .menu-btn span { display:block; width:18px; height:2px; background:var(--text); border-radius:2px; position:relative; }
+    .menu-btn span::before,.menu-btn span::after { content:''; position:absolute; left:0; width:18px; height:2px;
+      background:var(--text); border-radius:2px; }
+    .menu-btn span::before { top:-6px; } .menu-btn span::after { top:6px; }
+    .topbar-title { font-size:1rem; font-weight:600; letter-spacing:-0.02em; flex:1; min-width:0;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .topbar-actions { display:flex; align-items:center; gap:8px; }
+    .icon-btn { width:40px; height:40px; border-radius:10px; background:rgba(255,255,255,0.04);
+      border:1px solid var(--glass-border); display:grid; place-items:center; font-size:1rem;
+      color:var(--text-2); transition:all 0.25s var(--ease); flex-shrink:0; }
+    .icon-btn:hover { background:rgba(255,255,255,0.09); color:var(--text); }
+    .content { flex:1; padding:24px 20px 80px; }
+    @media (min-width:960px) { .content { padding:32px 32px 60px; } }
+
+    .bottom-nav { position:fixed; bottom:0; left:0; right:0; z-index:90; background:rgba(14,14,18,0.92);
+      -webkit-backdrop-filter:blur(24px) saturate(140%); backdrop-filter:blur(24px) saturate(140%);
+      border-top:1px solid var(--glass-border); display:grid; grid-template-columns:repeat(5,1fr);
+      padding:6px 4px calc(6px + env(safe-area-inset-bottom)); gap:2px; }
+    @media (min-width:960px) { .bottom-nav { display:none; } }
+    .bnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; padding:8px 4px;
+      border-radius:10px; color:var(--text-3); font-size:0.62rem; font-weight:500;
+      transition:all 0.25s var(--ease); position:relative; -webkit-tap-highlight-color:transparent; }
+    .bnav-item .nav-icon { font-size:1.1rem; }
+    .bnav-item.active { color:var(--gold); }
+    .bnav-badge { position:absolute; top:4px; right:calc(50% - 18px); min-width:16px; height:16px;
+      padding:0 4px; border-radius:var(--radius-pill); background:var(--red); color:white;
+      font-size:0.58rem; font-weight:700; display:grid; place-items:center; }
+    .bnav-badge.hidden { display:none; }
+
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6);
+      -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); z-index:95; opacity:0;
+      visibility:hidden; transition:opacity 0.3s ease,visibility 0.3s; }
+    .overlay.open { opacity:1; visibility:visible; }
+    @media (min-width:960px) { .overlay { display:none; } }
+
+    .view { display:none; animation:viewIn 0.4s var(--ease); }
+    .view.active { display:block; }
+    @keyframes viewIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .view-header { margin-bottom:24px; display:flex; flex-wrap:wrap; align-items:flex-end;
+      justify-content:space-between; gap:16px; }
+    .view-title { font-size:clamp(1.5rem,3vw,2rem); font-weight:700; letter-spacing:-0.03em;
+      line-height:1.1; margin-bottom:4px; }
+    .view-sub { font-size:0.88rem; color:var(--text-2); }
+
+    .card { background:var(--glass); -webkit-backdrop-filter:blur(20px) saturate(140%);
+      backdrop-filter:blur(20px) saturate(140%); border:1px solid var(--glass-border);
+      border-radius:var(--radius-lg); box-shadow:var(--shadow-md); }
+    .card-pad { padding:22px; }
+    .stat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:24px; }
+    @media (min-width:640px) { .stat-grid { grid-template-columns:repeat(3,1fr); } }
+    @media (min-width:1100px) { .stat-grid { grid-template-columns:repeat(4,1fr); } }
+    .stat-card { padding:18px; border-radius:var(--radius-md); background:var(--glass);
+      -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); border:1px solid var(--glass-border);
+      transition:all 0.3s var(--ease); }
+    .stat-card:hover { transform:translateY(-3px); border-color:rgba(212,175,55,0.2);
+      box-shadow:0 16px 32px -16px rgba(212,175,55,0.15); }
+    .stat-icon { width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
+      font-size:1rem; margin-bottom:12px; background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.15); }
+    .stat-icon.green { background:var(--green-bg); border-color:rgba(52,211,153,0.2); }
+    .stat-icon.red { background:var(--red-bg); border-color:rgba(248,113,113,0.2); }
+    .stat-icon.amber { background:var(--amber-bg); border-color:rgba(251,191,36,0.2); }
+    .stat-icon.blue { background:var(--blue-bg); border-color:rgba(96,165,250,0.2); }
+    .stat-value { font-size:1.6rem; font-weight:700; letter-spacing:-0.03em; line-height:1; margin-bottom:6px; }
+    .stat-label { font-size:0.72rem; color:var(--text-3); letter-spacing:0.02em; }
+
+    .section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:28px 0 14px; }
+    .section-head h3 { font-size:1rem; font-weight:600; letter-spacing:-0.02em; }
+    .section-head .link { font-size:0.8rem; color:var(--gold); font-weight:500; }
+
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:0 20px;
+      height:44px; font-size:0.85rem; font-weight:600; letter-spacing:-0.01em; border-radius:12px;
+      border:1px solid transparent; transition:all 0.3s var(--ease); white-space:nowrap;
+      -webkit-tap-highlight-color:transparent; }
+    .btn-primary { background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:#0a0a0c; box-shadow:var(--shadow-gold); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 16px 40px -10px rgba(212,175,55,0.5); }
+    .btn-secondary { background:rgba(255,255,255,0.05); color:var(--text); border-color:rgba(255,255,255,0.12); }
+    .btn-secondary:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.25); }
+    .btn-danger { background:rgba(248,113,113,0.1); color:var(--red); border-color:rgba(248,113,113,0.25); }
+    .btn-danger:hover { background:rgba(248,113,113,0.2); }
+    .btn-sm { height:34px; padding:0 14px; font-size:0.78rem; border-radius:9px; }
+    .btn-block { width:100%; }
+    .btn:disabled { opacity:0.5; cursor:not-allowed; transform:none !important; }
+    .btn-icon { width:34px; height:34px; padding:0; border-radius:9px; display:grid; place-items:center; font-size:0.9rem; }
+
+    .field { margin-bottom:16px; }
+    .field-label { display:block; font-size:0.76rem; font-weight:500; color:var(--text-2);
+      margin-bottom:7px; letter-spacing:0.02em; }
+    .field-label .req { color:var(--gold); margin-left:2px; }
+    .input,.select,.textarea { width:100%; padding:12px 14px; min-height:44px; border-radius:11px;
+      background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); color:var(--text);
+      font-size:0.88rem; transition:all 0.25s var(--ease); outline:none;
+      -webkit-appearance:none; appearance:none; }
+    .input::placeholder,.textarea::placeholder { color:var(--text-4); }
+    .input:focus,.select:focus,.textarea:focus { border-color:var(--gold); background:rgba(212,175,55,0.04);
+      box-shadow:0 0 0 3px rgba(212,175,55,0.1); }
+    .select { background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23a4a4ae' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; }
+    .textarea { resize:vertical; min-height:90px; line-height:1.55; }
+    .field-row { display:grid; gap:16px; }
+    @media (min-width:600px) { .field-row.two { grid-template-columns:1fr 1fr; } }
+    @media (min-width:900px) { .field-row.three { grid-template-columns:1fr 1fr 1fr; } }
+    .hint { font-size:0.72rem; color:var(--text-4); margin-top:5px; }
+
+    .badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:var(--radius-pill);
+      font-size:0.68rem; font-weight:600; letter-spacing:0.03em; text-transform:uppercase; white-space:nowrap; }
+    .badge-green { background:var(--green-bg); color:var(--green); border:1px solid rgba(52,211,153,0.2); }
+    .badge-red { background:var(--red-bg); color:var(--red); border:1px solid rgba(248,113,113,0.2); }
+    .badge-amber { background:var(--amber-bg); color:var(--amber); border:1px solid rgba(251,191,36,0.2); }
+    .badge-blue { background:var(--blue-bg); color:var(--blue); border:1px solid rgba(96,165,250,0.2); }
+    .badge-gray { background:rgba(255,255,255,0.05); color:var(--text-2); border:1px solid var(--glass-border); }
+
+    .table-wrap { overflow-x:auto; border-radius:var(--radius-md); border:1px solid var(--glass-border);
+      background:var(--glass); -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); }
+    table { width:100%; border-collapse:collapse; font-size:0.84rem; min-width:720px; }
+    thead th { text-align:left; padding:12px 16px; font-size:0.68rem; font-weight:600; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--text-4); border-bottom:1px solid var(--glass-border);
+      background:rgba(255,255,255,0.02); white-space:nowrap; }
+    tbody td { padding:14px 16px; border-bottom:1px solid rgba(255,255,255,0.04); vertical-align:middle; }
+    tbody tr:last-child td { border-bottom:none; }
+    tbody tr { transition:background 0.2s ease; cursor:pointer; }
+    tbody tr:hover { background:rgba(255,255,255,0.03); }
+    .cell-primary { font-weight:500; color:var(--text); }
+    .cell-secondary { font-size:0.78rem; color:var(--text-3); margin-top:2px; }
+    .cell-actions { display:flex; gap:6px; justify-content:flex-end; }
+
+    .empty { display:grid; place-items:center; gap:12px; padding:56px 24px; text-align:center; color:var(--text-3); }
+    .empty-icon { width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,0.04);
+      border:1px solid var(--glass-border); display:grid; place-items:center; font-size:1.6rem; opacity:0.7; }
+    .empty h4 { font-size:1rem; font-weight:600; color:var(--text-2); }
+    .empty p { font-size:0.82rem; max-width:320px; }
+
+    .cal-panel {
+      padding:24px;
+      border-radius:var(--radius-xl);
+      background: linear-gradient(160deg, rgba(24,24,32,0.9) 0%, rgba(16,16,22,0.85) 100%);
+      -webkit-backdrop-filter:blur(24px) saturate(140%);
+      backdrop-filter:blur(24px) saturate(140%);
+      border:1px solid rgba(212,175,55,0.12);
+      box-shadow: 0 24px 60px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .cal-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; gap:12px; }
+    .cal-label {
+      font-size:1.15rem; font-weight:700; letter-spacing:-0.02em;
+      background:linear-gradient(135deg, #ffffff, #d4af37);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .cal-btns { display:flex; gap:6px; }
+    .cal-btn { width:38px; height:38px; border-radius:10px; background:rgba(212,175,55,0.08);
+      border:1px solid rgba(212,175,55,0.18); color:var(--gold); display:grid; place-items:center;
+      transition:all 0.25s var(--ease); font-size:1.1rem; line-height:1; padding-bottom:3px; }
+    .cal-btn:hover { background:rgba(212,175,55,0.2); color:#ffffff; border-color:var(--gold); transform:scale(1.06); }
+    .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:5px; }
+    .cal-dow { text-align:center; font-size:0.65rem; font-weight:700; letter-spacing:0.12em;
+      text-transform:uppercase; color:var(--text-3); padding:10px 0 8px; }
+    .cal-day { aspect-ratio:1; display:grid; place-items:center; border-radius:10px; font-size:0.82rem;
+      font-weight:500; color:var(--text-2); border:1px solid transparent; transition:all 0.22s var(--ease);
+      cursor:pointer; position:relative; min-height:38px; }
+    .cal-day.other { color:var(--text-4); opacity:0.25; cursor:default; }
+    .cal-day.today { border-color:var(--gold); font-weight:800; color:var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), 0 0 20px -4px var(--gold-glow); }
+    .cal-day.available { background:linear-gradient(135deg, rgba(52,211,153,0.14), rgba(52,211,153,0.06));
+      color:var(--green); border-color:rgba(52,211,153,0.25); }
+    .cal-day.available:hover { background:rgba(52,211,153,0.28); transform:scale(1.08);
+      box-shadow:0 8px 20px -6px rgba(52,211,153,0.5); }
+    .cal-day.booked { background:linear-gradient(135deg, rgba(248,113,113,0.14), rgba(248,113,113,0.06));
+      color:var(--red); border-color:rgba(248,113,113,0.25); }
+    .cal-day.booked:hover { background:rgba(248,113,113,0.24); }
+    .cal-day.pending { background:linear-gradient(135deg, rgba(251,191,36,0.14), rgba(251,191,36,0.06));
+      color:var(--amber); border-color:rgba(251,191,36,0.25); }
+    .cal-day.pending:hover { background:rgba(251,191,36,0.24); }
+    .cal-legend { display:flex; flex-wrap:wrap; gap:16px; margin-top:20px; padding-top:16px;
+      border-top:1px solid rgba(255,255,255,0.06); }
+    .legend-item { display:flex; align-items:center; gap:7px; font-size:0.74rem; color:var(--text-2); }
+    .legend-swatch { width:10px; height:10px; border-radius:50%; }
+    .swatch-available { background:var(--green); box-shadow:0 0 8px var(--green); }
+    .swatch-booked { background:var(--red); box-shadow:0 0 8px var(--red); }
+    .swatch-pending { background:var(--amber); box-shadow:0 0 8px var(--amber); }
+
+    .modal-backdrop { position:fixed; inset:0; z-index:1000; background:rgba(4,4,6,0.75);
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); display:flex; align-items:center;
+      justify-content:center; padding:20px; opacity:0; visibility:hidden;
+      transition:opacity 0.3s ease,visibility 0.3s; }
+    .modal-backdrop.open { opacity:1; visibility:visible; }
+    .modal { background:var(--panel); border:1px solid var(--glass-border); border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-lg); width:100%; max-width:620px; max-height:90vh; display:flex;
+      flex-direction:column; transform:scale(0.94) translateY(16px); transition:transform 0.35s var(--ease); }
+    .modal-backdrop.open .modal { transform:scale(1) translateY(0); }
+    .modal-lg { max-width:800px; } .modal-sm { max-width:440px; }
+    .modal-head { padding:20px 24px; border-bottom:1px solid var(--glass-border); display:flex;
+      align-items:center; justify-content:space-between; gap:12px; flex-shrink:0; }
+    .modal-title { font-size:1.05rem; font-weight:600; letter-spacing:-0.02em; }
+    .modal-close { width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.05);
+      border:1px solid var(--glass-border); display:grid; place-items:center; font-size:1.2rem;
+      color:var(--text-2); transition:all 0.25s var(--ease); flex-shrink:0; line-height:1; padding-bottom:3px; }
+    .modal-close:hover { background:rgba(255,255,255,0.12); color:var(--text); transform:rotate(90deg); }
+    .modal-body { padding:24px; overflow-y:auto; flex:1; }
+    .modal-foot { padding:16px 24px; border-top:1px solid var(--glass-border); display:flex;
+      gap:10px; justify-content:flex-end; flex-shrink:0; }
+    @media (max-width:600px) { .modal-backdrop { padding:12px; align-items:flex-end; }
+      .modal { max-height:92vh; border-radius:var(--radius-xl) var(--radius-xl) 0 0; }
+      .modal-foot { flex-direction:column-reverse; } .modal-foot .btn { width:100%; } }
+
+    .login-screen { position:fixed; inset:0; z-index:500; display:grid; place-items:center;
+      padding:24px; background:var(--bg); overflow-y:auto; }
+    .login-screen::before { content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse 60% 50% at 30% 30%, rgba(212,175,55,0.12), transparent 60%),
+                  radial-gradient(ellipse 50% 40% at 70% 70%, rgba(80,80,180,0.1), transparent 60%);
+      pointer-events:none; }
+    .login-card { width:100%; max-width:420px; padding:40px 32px; border-radius:var(--radius-xl);
+      background:var(--glass); -webkit-backdrop-filter:blur(28px) saturate(140%);
+      backdrop-filter:blur(28px) saturate(140%); border:1px solid var(--glass-border);
+      box-shadow:var(--shadow-lg); position:relative; z-index:2; }
+    @media (max-width:480px) { .login-card { padding:32px 22px; } }
+    .login-mark { width:56px; height:56px; border-radius:16px;
+      background:linear-gradient(135deg,var(--gold-light),var(--gold-dark)); display:grid;
+      place-items:center; font-size:1.1rem; font-weight:800; color:#0a0a0c; margin:0 auto 22px;
+      box-shadow:0 12px 32px -8px var(--gold-glow); }
+    .login-title { font-size:1.5rem; font-weight:700; letter-spacing:-0.03em; text-align:center; margin-bottom:6px; }
+    .login-sub { font-size:0.85rem; color:var(--text-2); text-align:center; margin-bottom:28px; }
+    .login-error { padding:12px 16px; border-radius:11px; background:var(--red-bg);
+      border:1px solid rgba(248,113,113,0.25); color:var(--red); font-size:0.82rem;
+      margin-bottom:16px; display:none; line-height:1.5; }
+    .login-error.show { display:block; animation:shake 0.4s; }
+    @keyframes shake { 0%,100% { transform:translateX(0); } 25% { transform:translateX(-6px); } 75% { transform:translateX(6px); } }
+
+    .toast-stack { position:fixed; top:20px; right:20px; z-index:3000; display:flex;
+      flex-direction:column; gap:10px; pointer-events:none; max-width:calc(100vw - 40px); }
+    .toast { padding:13px 20px; border-radius:12px; background:rgba(20,20,26,0.96);
+      -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); border:1px solid var(--glass-border);
+      box-shadow:var(--shadow-lg); font-size:0.85rem; font-weight:500; color:var(--text);
+      display:flex; align-items:center; gap:10px; animation:toastIn 0.4s var(--ease);
+      pointer-events:all; min-width:240px; }
+    .toast.success { border-color:rgba(52,211,153,0.3); }
+    .toast.error { border-color:rgba(248,113,113,0.3); }
+    .toast.info { border-color:rgba(212,175,55,0.3); }
+    .toast-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    .toast.success .toast-dot { background:var(--green); }
+    .toast.error .toast-dot { background:var(--red); }
+    .toast.info .toast-dot { background:var(--gold); }
+    @keyframes toastIn { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+
+    .spinner { width:18px; height:18px; border:2px solid rgba(255,255,255,0.2);
+      border-top-color:currentColor; border-radius:50%; animation:spin 0.7s linear infinite;
+      display:inline-block; flex-shrink:0; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .skeleton { background:linear-gradient(90deg,#14141a 25%,#1e1e26 50%,#14141a 75%);
+      background-size:200% 100%; animation:shimmer 1.6s linear infinite; border-radius:8px; }
+    @keyframes shimmer { 0% { background-position:200% 0; } 100% { background-position:-200% 0; } }
+
+    .hidden { display:none !important; }
+    .mono { font-family:'SF Mono',Monaco,monospace; font-size:0.85em; }
+    .row { display:flex; align-items:center; gap:10px; }
+    .row-between { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .wrap { flex-wrap:wrap; } .grow { flex:1; min-width:0; }
+    .muted { color:var(--text-3); }
+
+    .detail-grid { display:grid; gap:14px; }
+    @media (min-width:600px) { .detail-grid.two { grid-template-columns:1fr 1fr; } }
+    .detail-item { padding:14px 16px; border-radius:12px; background:rgba(255,255,255,0.03);
+      border:1px solid var(--glass-border); }
+    .detail-label { font-size:0.68rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--text-4); margin-bottom:6px; }
+    .detail-value { font-size:0.9rem; font-weight:500; word-break:break-word; line-height:1.5; }
+
+    .tabs { display:flex; gap:4px; padding:4px; border-radius:12px; background:rgba(255,255,255,0.03);
+      border:1px solid var(--glass-border); margin-bottom:20px; overflow-x:auto; scrollbar-width:none; }
+    .tabs::-webkit-scrollbar { display:none; }
+    .tab { padding:8px 16px; border-radius:9px; font-size:0.8rem; font-weight:500;
+      color:var(--text-2); white-space:nowrap; transition:all 0.25s var(--ease); flex-shrink:0; }
+    .tab:hover { color:var(--text); background:rgba(255,255,255,0.04); }
+    .tab.active { background:var(--gold); color:#0a0a0c; font-weight:600; }
+
+    .log-list { display:flex; flex-direction:column; }
+    .log-item { display:flex; gap:14px; padding:14px 4px; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .log-item:last-child { border-bottom:none; }
+    .log-icon { width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.04);
+      border:1px solid var(--glass-border); display:grid; place-items:center; font-size:0.9rem; flex-shrink:0; }
+    .log-body { flex:1; min-width:0; }
+    .log-action { font-size:0.86rem; font-weight:500; margin-bottom:3px; }
+    .log-meta { font-size:0.72rem; color:var(--text-3); display:flex; flex-wrap:wrap; gap:10px; }
+
+    .char-count { text-align:right; font-size:0.7rem; color:var(--text-4); margin-top:4px; }
+
+    .confirm-icon { width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
+      font-size:1.5rem; margin:0 auto 18px; background:var(--red-bg);
+      border:1px solid rgba(248,113,113,0.25); color:var(--red); }
+    .confirm-icon.warn { background:var(--amber-bg); border-color:rgba(251,191,36,0.25); color:var(--amber); }
+    .confirm-text { text-align:center; font-size:0.9rem; color:var(--text-2); line-height:1.6; }
+
+    .fb-status { position:fixed; bottom:0; left:0; right:0; z-index:5000;
+      background:#0a0a0c; border-top:1px solid rgba(255,255,255,0.1);
+      padding:6px 16px; font-family:'SF Mono',Monaco,monospace; font-size:10px;
+      color:#a4a4ae; display:flex; gap:16px; flex-wrap:wrap; }
+    .fb-status .ok { color:#34d399; } .fb-status .err { color:#f87171; } .fb-status .warn { color:#fbbf24; }
+
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm" autocomplete="on">
+      <div class="login-mark">NGB</div>
+      <h1 class="login-title">Admin Access</h1>
+      <p class="login-sub">New Golden Brass Band Control Panel</p>
+      <div class="login-error" id="loginError" role="alert"></div>
+      <div class="field">
+        <label class="field-label" for="loginEmail">Email <span class="req">*</span></label>
+        <input type="email" class="input" id="loginEmail" required autocomplete="username" placeholder="admin@newgoldenband.com" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="loginPassword">Password <span class="req">*</span></label>
+        <input type="password" class="input" id="loginPassword" required autocomplete="current-password" placeholder="••••••••" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="loginBtn" style="margin-top:8px;">Sign In</button>
+      <p class="hint" style="text-align:center;margin-top:20px;">Protected area. Authorized personnel only.</p>
+    </form>
+  </div>
+
+  <div class="app hidden" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-mark">NGB</div>
+        <div class="sidebar-brand-text"><strong>New Golden</strong><small>Admin Panel</small></div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">▦</span><span>Dashboard</span></button>
+        <button class="nav-item" data-view="bookings"><span class="nav-icon">✦</span><span>Booking Requests</span><span class="nav-badge hidden" id="navBookingBadge">0</span></button>
+        <button class="nav-item" data-view="calendar"><span class="nav-icon">▤</span><span>Calendar</span></button>
+        <button class="nav-item" data-view="orders"><span class="nav-icon">📋</span><span>Orders</span></button>
+        <div class="nav-section-label">Configuration</div>
+        <button class="nav-item" data-view="content"><span class="nav-icon">◆</span><span>Website Content</span></button>
+        <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span><span>Settings</span></button>
+        <button class="nav-item" data-view="activity"><span class="nav-icon">≣</span><span>Activity Log</span></button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="user-avatar" id="userAvatar">A</div>
+          <div class="user-info"><strong id="userName">Admin</strong><small id="userEmail">admin@band.com</small></div>
+        </div>
+        <button class="btn btn-secondary btn-block btn-sm" id="logoutBtn">Sign Out</button>
+      </div>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span></button>
+        <h1 class="topbar-title" id="topbarTitle">Dashboard</h1>
+        <div class="topbar-actions">
+          <button class="icon-btn" id="refreshBtn" title="Refresh" aria-label="Refresh data">↻</button>
+          <button class="icon-btn" id="openPublicBtn" title="View public site" aria-label="View public site" onclick="window.open('index.html','_blank')">↗</button>
+        </div>
+      </header>
+
+      <main class="content" id="content">
+
+        <section class="view active" id="view-overview">
+          <div class="view-header">
+            <div><h2 class="view-title">Dashboard</h2><p class="view-sub">Overview of your band's activity and bookings</p></div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-icon amber">✦</div><div class="stat-value" id="statPending">—</div><div class="stat-label">Pending Requests</div></div>
+            <div class="stat-card"><div class="stat-icon green">✓</div><div class="stat-value" id="statConfirmed">—</div><div class="stat-label">Confirmed Bookings</div></div>
+            <div class="stat-card"><div class="stat-icon red">■</div><div class="stat-value" id="statBookedDates">—</div><div class="stat-label">Booked Dates</div></div>
+            <div class="stat-card"><div class="stat-icon blue">◇</div><div class="stat-value" id="statAvailable">—</div><div class="stat-label">Available Upcoming</div></div>
+          </div>
+          <div class="section-head"><h3>Recent Booking Requests</h3><button class="link" data-goto="bookings">View all →</button></div>
+          <div class="card" id="recentRequests"><div class="empty"><div class="spinner"></div></div></div>
+          <div class="section-head"><h3>Upcoming Bookings</h3><button class="link" data-goto="calendar">View calendar →</button></div>
+          <div class="card" id="upcomingEvents"><div class="empty"><div class="spinner"></div></div></div>
+        </section>
+
+        <section class="view" id="view-bookings">
+          <div class="view-header">
+            <div><h2 class="view-title">Booking Requests</h2><p class="view-sub">Manage customer booking requests</p></div>
+          </div>
+          <div class="tabs" id="bookingTabs">
+            <button class="tab active" data-bstatus="all">All</button>
+            <button class="tab" data-bstatus="PENDING">Pending</button>
+            <button class="tab" data-bstatus="CONFIRMED">Confirmed</button>
+            <button class="tab" data-bstatus="REJECTED">Rejected</button>
+            <button class="tab" data-bstatus="CANCELLED">Cancelled</button>
+          </div>
+          <div id="bookingsContainer"><div class="empty"><div class="spinner"></div></div></div>
+        </section>
+
+        <section class="view" id="view-calendar">
+          <div class="view-header">
+            <div><h2 class="view-title">Booking Calendar</h2><p class="view-sub">Manage availability dates shown on the public website</p></div>
+            <button class="btn btn-primary" id="addDateBtn">+ Add Date</button>
+          </div>
+          <div class="cal-panel">
+            <div class="cal-top">
+              <div class="cal-label" id="calLabel">Month Year</div>
+              <div class="cal-btns">
+                <button class="cal-btn" id="calPrev" aria-label="Previous month">‹</button>
+                <button class="cal-btn" id="calNext" aria-label="Next month">›</button>
+              </div>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-legend">
+              <div class="legend-item"><span class="legend-swatch swatch-available"></span> Available</div>
+              <div class="legend-item"><span class="legend-swatch swatch-booked"></span> Booked</div>
+              <div class="legend-item"><span class="legend-swatch swatch-pending"></span> Pending</div>
+            </div>
+          </div>
+          <div class="section-head"><h3>All Booking Dates</h3></div>
+          <div id="datesContainer"><div class="empty"><div class="spinner"></div></div></div>
+        </section>
+
+        <section class="view" id="view-orders">
+          <div class="view-header">
+            <div><h2 class="view-title">Orders &amp; Schedule</h2><p class="view-sub">Confirmed orders appear on the public website's ORDERS section</p></div>
+            <button class="btn btn-primary" id="addOrderBtn">+ Add Order</button>
+          </div>
+          <div id="ordersAdminContainer"><div class="empty"><div class="spinner"></div></div></div>
+        </section>
+
+        <section class="view" id="view-content">
+          <div class="view-header">
+            <div><h2 class="view-title">Website Content</h2><p class="view-sub">Edit the text and contact details shown on the public site</p></div>
+          </div>
+          <div class="card card-pad" style="max-width:720px;">
+            <form id="contentForm">
+              <div class="field"><label class="field-label" for="cBusinessName">Business Name</label><input type="text" class="input" id="cBusinessName" placeholder="New Golden Brass Band" /></div>
+              <div class="field-row two">
+                <div class="field"><label class="field-label" for="cPhone">Phone Number</label><input type="tel" class="input" id="cPhone" placeholder="+91 98765 43210" /></div>
+                <div class="field"><label class="field-label" for="cWhatsapp">WhatsApp Number</label><input type="tel" class="input" id="cWhatsapp" placeholder="919876543210" /></div>
+              </div>
+              <div class="field"><label class="field-label" for="cAddress">Address</label><input type="text" class="input" id="cAddress" placeholder="Deola, Maharashtra, India" /></div>
+              <div class="field">
+                <label class="field-label" for="cAbout">About Text</label>
+                <textarea class="textarea" id="cAbout" rows="4" maxlength="500" placeholder="Short description of the band..."></textarea>
+                <div class="char-count"><span id="aboutCount">0</span> / 500</div>
+              </div>
+              <div class="field-row three">
+                <div class="field"><label class="field-label" for="cInstagram">Instagram URL</label><input type="url" class="input" id="cInstagram" placeholder="https://instagram.com/..." /></div>
+                <div class="field"><label class="field-label" for="cFacebook">Instagram URL</label><input type="url" class="input" id="cFacebook" placeholder="https://facebook.com/..." /></div>
+                <div class="field"><label class="field-label" for="cYoutube">YouTube URL</label><input type="url" class="input" id="cYoutube" placeholder="https://youtube.com/..." /></div>
+              </div>
+              <div class="field">
+                <label class="field-label" for="cHeroMedia">Hero Media URL (image or video)</label>
+                <input type="url" class="input" id="cHeroMedia" placeholder="https://.../hero.jpg" />
+                <div class="hint">Direct link to an image (.jpg, .png) or video (.mp4) for the homepage hero.</div>
+              </div>
+              <div class="field"><label class="field-label" for="cLogo">Logo URL</label><input type="url" class="input" id="cLogo" placeholder="https://.../logo.png" /></div>
+              <button type="submit" class="btn btn-primary" id="saveContentBtn">Save Content</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="view" id="view-settings">
+          <div class="view-header"><div><h2 class="view-title">Settings</h2><p class="view-sub">Account and system information</p></div></div>
+          <div class="card card-pad" style="max-width:560px;margin-bottom:20px;">
+            <h3 style="font-size:0.95rem;font-weight:600;margin-bottom:14px;">Account</h3>
+            <div class="detail-grid">
+              <div class="detail-item"><div class="detail-label">Email</div><div class="detail-value" id="settingsEmail">—</div></div>
+              <div class="detail-item"><div class="detail-label">User ID</div><div class="detail-value mono" id="settingsUserId">—</div></div>
+              <div class="detail-item"><div class="detail-label">Last Sign In</div><div class="detail-value" id="settingsLastSignIn">—</div></div>
+            </div>
+          </div>
+          <div class="card card-pad" style="max-width:560px;">
+            <h3 style="font-size:0.95rem;font-weight:600;margin-bottom:14px;">System</h3>
+            <div class="detail-grid">
+              <div class="detail-item"><div class="detail-label">Backend</div><div class="detail-value">Firebase Realtime Database</div></div>
+              <div class="detail-item"><div class="detail-label">Project</div><div class="detail-value mono">new-golden-brass-band</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-activity">
+          <div class="view-header"><div><h2 class="view-title">Activity Log</h2><p class="view-sub">Recent actions performed in the dashboard</p></div></div>
+          <div class="card card-pad" id="activityContainer"><div class="empty"><div class="spinner"></div></div></div>
+        </section>
+
+      </main>
+
+      <nav class="bottom-nav">
+        <button class="bnav-item active" data-view="overview"><span class="nav-icon">▦</span><span>Home</span></button>
+        <button class="bnav-item" data-view="bookings"><span class="nav-icon">✦</span><span>Bookings</span><span class="bnav-badge hidden" id="bnavBookingBadge">0</span></button>
+        <button class="bnav-item" data-view="calendar"><span class="nav-icon">▤</span><span>Calendar</span></button>
+        <button class="bnav-item" data-view="orders"><span class="nav-icon">📋</span><span>Orders</span></button>
+        <button class="bnav-item" data-view="settings"><span class="nav-icon">⚙</span><span>More</span></button>
+      </nav>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal">
+      <div class="modal-head">
+        <h3 class="modal-title" id="modalTitle">Modal</h3>
+        <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-foot" id="modalFoot"></div>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toastStack"></div>
+
+  <div class="fb-status" id="fbStatus">
+    <span id="fbApp">Firebase: <span class="warn">checking…</span></span>
+    <span id="fbAuth">Auth: <span class="warn">checking…</span></span>
+    <span id="fbDb">Database: <span class="warn">checking…</span></span>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import {
+      getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged,
+      setPersistence, browserLocalPersistence
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+    import {
+      getDatabase, ref as dbRef, get, set, update, remove, push, onValue
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+    /* NOTE: firebase-storage is intentionally NOT imported anymore,
+       because photo uploading has been removed. */
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBc2oWeDEsINA1jRO_kzOe3SYuvPi3sTtY",
+      authDomain: "new-golden-brass-band.firebaseapp.com",
+      databaseURL: "https://new-golden-brass-band-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "new-golden-brass-band",
+      storageBucket: "new-golden-brass-band.firebasestorage.app",
+      messagingSenderId: "146384353580",
+      appId: "1:146384353580:web:d53acd06498a33520e5489",
+      measurementId: "G-8TDX95VNS8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const rtdb = getDatabase(app);
+
+    const $ = (s, ctx = document) => ctx.querySelector(s);
+    const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const dateKey = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const parseKey = (k) => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d); };
+    const prettyDate = (k) => { try { return parseKey(k).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }); } catch { return k; } };
+    const prettyDateTime = (ms) => {
+      if (!ms) return '—';
+      try { return new Date(ms).toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }); }
+      catch { return '—'; }
+    };
+    const timeAgo = (ms) => {
+      if (!ms) return '';
+      const diff = Date.now() - ms;
+      const m = Math.floor(diff / 60000);
+      if (m < 1) return 'just now';
+      if (m < 60) return `${m}m ago`;
+      const h = Math.floor(m / 60);
+      if (h < 24) return `${h}h ago`;
+      const d = Math.floor(h / 24);
+      if (d < 30) return `${d}d ago`;
+      return new Date(ms).toLocaleDateString('en-IN');
+    };
+    const escapeHtml = (s) => { if (s == null) return ''; return String(s).replace(/[&<>"']/g, (m) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); };
+
+    function setAuthStatus(text, cls) {
+      const a = document.getElementById('fbAuth');
+      if (!a) return;
+      a.innerHTML = `Auth: <span class="${cls}">${escapeHtml(text)}</span>`;
+    }
+
+    document.getElementById('fbApp').innerHTML = `Firebase: <span class="ok">Connected</span>`;
+
+    onValue(dbRef(rtdb, '.info/connected'), (snap) => {
+      const connected = snap.val() === true;
+      const dbEl = document.getElementById('fbDb');
+      if (dbEl) dbEl.innerHTML = `Database: <span class="${connected ? 'ok' : 'err'}">${connected ? 'Connected' : 'Disconnected'}</span>`;
+    });
+
+    const Toast = (() => {
+      const stack = $('#toastStack');
+      return {
+        show(msg, type = 'info', dur = 3800) {
+          const el = document.createElement('div');
+          el.className = `toast ${type}`;
+          el.innerHTML = `<span class="toast-dot"></span><span>${escapeHtml(msg)}</span>`;
+          stack.appendChild(el);
+          setTimeout(() => {
+            el.style.opacity = '0'; el.style.transform = 'translateX(30px)';
+            setTimeout(() => el.remove(), 300);
+          }, dur);
+        },
+        success(m) { this.show(m, 'success'); },
+        error(m) { this.show(m, 'error', 5000); },
+        info(m) { this.show(m, 'info'); }
+      };
+    })();
+
+    const State = {
+      user: null,
+      bookings: [], bookingFilter: 'all',
+      bookingDates: [],
+      orders: [],
+      calendar: { month: new Date().getMonth(), year: new Date().getFullYear() },
+      settings: {},
+      activity: []
+    };
+
+    const Nav = (() => {
+      const sidebar = $('#sidebar'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
+      function open() { sidebar.classList.add('open'); overlay.classList.add('open'); document.body.classList.add('no-scroll'); }
+      function close() { sidebar.classList.remove('open'); overlay.classList.remove('open'); document.body.classList.remove('no-scroll'); }
+      function setView(view) {
+        $$('.nav-item').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+        $$('.bnav-item').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+        $$('.view').forEach(v => v.classList.remove('active'));
+        const target = document.getElementById('view-' + view);
+        if (target) target.classList.add('active');
+        const titles = { overview:'Dashboard', bookings:'Booking Requests', calendar:'Calendar', orders:'Orders & Schedule', content:'Website Content', settings:'Settings', activity:'Activity Log' };
+        $('#topbarTitle').textContent = titles[view] || 'Dashboard';
+        close();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (view === 'activity') renderActivity();
+        if (view === 'content') renderContentForm();
+        if (view === 'orders') renderOrdersAdmin();
+      }
+      function init() {
+        menuBtn.addEventListener('click', () => sidebar.classList.contains('open') ? close() : open());
+        overlay.addEventListener('click', close);
+        $$('.nav-item[data-view], .bnav-item[data-view]').forEach(btn => {
+          btn.addEventListener('click', () => setView(btn.dataset.view));
+        });
+        $$('[data-goto]').forEach(btn => {
+          btn.addEventListener('click', () => setView(btn.dataset.goto));
+        });
+      }
+      return { init, setView };
+    })();
+
+    const Modal = (() => {
+      const backdrop = $('#modalBackdrop'), modal = $('#modal'), title = $('#modalTitle'),
+            body = $('#modalBody'), foot = $('#modalFoot'), closeBtn = $('#modalClose');
+      let onCloseCb = null;
+      function open(opts) {
+        title.textContent = opts.title || '';
+        body.innerHTML = opts.body || '';
+        foot.innerHTML = opts.foot || '';
+        modal.className = 'modal' + (opts.size ? ' modal-' + opts.size : '');
+        backdrop.classList.add('open');
+        document.body.classList.add('no-scroll');
+        onCloseCb = opts.onClose || null;
+        if (opts.onMount) opts.onMount(body, foot);
+      }
+      function close() {
+        backdrop.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+        if (onCloseCb) onCloseCb();
+        onCloseCb = null;
+      }
+      function init() {
+        closeBtn.addEventListener('click', close);
+        backdrop.addEventListener('click', (e) => { if (e.target === backdrop) close(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && backdrop.classList.contains('open')) close(); });
+      }
+      return { init, open, close };
+    })();
+
+    function confirmDialog({ title, message, confirmText = 'Confirm', danger = false, onConfirm }) {
+      const iconClass = danger ? 'confirm-icon' : 'confirm-icon warn';
+      Modal.open({
+        title: '', size: 'sm',
+        body: `<div class="${iconClass}">${danger ? '⚠' : '?'}</div>
+          <div class="confirm-text"><strong style="display:block;font-size:1rem;color:var(--text);margin-bottom:6px;">${escapeHtml(title)}</strong>${escapeHtml(message)}</div>`,
+        foot: `<button class="btn btn-secondary" id="confirmCancel">Cancel</button>
+          <button class="btn ${danger ? 'btn-danger' : 'btn-primary'}" id="confirmOk">${escapeHtml(confirmText)}</button>`,
+        onMount(_, footEl) {
+          footEl.querySelector('#confirmCancel').addEventListener('click', () => Modal.close());
+          footEl.querySelector('#confirmOk').addEventListener('click', () => { Modal.close(); onConfirm && onConfirm(); });
+        }
+      });
+    }
+
+    const Auth = (() => {
+      function showLogin() { $('#loginScreen').classList.remove('hidden'); $('#app').classList.add('hidden'); }
+      function showApp(user) { $('#loginScreen').classList.add('hidden'); $('#app').classList.remove('hidden'); State.user = user; updateUserUI(user); }
+
+      function updateUserUI(user) {
+        if (!user) return;
+        const email = user.email || 'admin@band.com';
+        const initial = (email[0] || 'A').toUpperCase();
+        $('#userAvatar').textContent = initial;
+        $('#userName').textContent = email.split('@')[0] || 'Admin';
+        $('#userEmail').textContent = email;
+        $('#settingsEmail').textContent = email;
+        $('#settingsUserId').textContent = user.uid || '—';
+        $('#settingsLastSignIn').textContent = user.metadata?.lastSignInTime
+          ? prettyDateTime(new Date(user.metadata.lastSignInTime).getTime())
+          : '—';
+        setAuthStatus('Signed in', 'ok');
+      }
+
+      function init() {
+        setPersistence(auth, browserLocalPersistence)
+          .then(() => { setAuthStatus('Ready', 'ok'); })
+          .catch((err) => { console.warn('setPersistence failed:', err); setAuthStatus('Ready', 'ok'); });
+
+        $('#loginForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = $('#loginEmail').value.trim();
+          const password = $('#loginPassword').value;
+          const errEl = $('#loginError'), btn = $('#loginBtn');
+          errEl.classList.remove('show');
+          if (!email || !password) {
+            errEl.textContent = 'Please enter both email and password.';
+            errEl.classList.add('show');
+            return;
+          }
+          btn.disabled = true;
+          btn.innerHTML = '<span class="spinner"></span> Signing in…';
+          try {
+            await signInWithEmailAndPassword(auth, email, password);
+            setAuthStatus('Signed in', 'ok');
+          } catch (err) {
+            let friendly = 'Sign-in failed. Please try again.';
+            if (err.code === 'auth/configuration-not-found') {
+              friendly = 'Email/Password sign-in is not enabled in Firebase Console. Enable it under Authentication → Sign-in method → Email/Password.';
+            } else if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password') {
+              friendly = 'Incorrect email or password.';
+            } else if (err.code === 'auth/user-not-found') {
+              friendly = 'No admin user exists with that email.';
+            } else if (err.code === 'auth/invalid-email') {
+              friendly = 'That email address is not valid.';
+            } else if (err.code === 'auth/too-many-requests') {
+              friendly = 'Too many failed attempts. Try again in a few minutes.';
+            } else if (err.code === 'auth/network-request-failed') {
+              friendly = 'Network error. Check your internet connection and try again.';
+            } else if (err.message) {
+              friendly = err.message;
+            }
+            errEl.textContent = friendly;
+            errEl.classList.add('show');
+            btn.disabled = false;
+            btn.textContent = 'Sign In';
+            setAuthStatus(err.code || err.message || 'Error', 'err');
+          }
+        });
+
+        $('#logoutBtn').addEventListener('click', async () => {
+          try { await signOut(auth); } catch (e) {}
+          Toast.info('Signed out');
+          setAuthStatus('Ready', 'ok');
+        });
+
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            showApp(user);
+            await Dashboard.loadAll();
+          } else {
+            State.user = null;
+            showLogin();
+            setAuthStatus('Ready', 'ok');
+          }
+        });
+      }
+      return { init };
+    })();
+
+    async function logActivity(action, details = {}) {
+      if (!State.user) return;
+      try {
+        const logsRef = dbRef(rtdb, 'admin_activity_logs');
+        const newRef = push(logsRef);
+        await set(newRef, {
+          action, details,
+          adminUserId: State.user.uid,
+          adminEmail: State.user.email || '',
+          createdAt: Date.now()
+        });
+      } catch (e) { console.warn('Activity log failed:', e); }
+    }
+
+    function computeStats() {
+      const todayKey = dateKey(new Date());
+      const pending = State.bookings.filter(b => (b.status || 'PENDING').toUpperCase() === 'PENDING').length;
+      const confirmed = State.bookings.filter(b => (b.status || '').toUpperCase() === 'CONFIRMED').length;
+      const bookedDates = State.bookingDates.filter(d => (d.status || '').toUpperCase() === 'BOOKED').length;
+      const available = State.bookingDates.filter(d => {
+        const st = (d.status || 'AVAILABLE').toUpperCase();
+        return st !== 'BOOKED' && d.eventDate >= todayKey;
+      }).length;
+      return { pending, confirmed, bookedDates, available };
+    }
+
+    function renderStats() {
+      const s = computeStats();
+      $('#statPending').textContent = s.pending;
+      $('#statConfirmed').textContent = s.confirmed;
+      $('#statBookedDates').textContent = s.bookedDates;
+      $('#statAvailable').textContent = s.available;
+      const pb = $('#navBookingBadge'), bb = $('#bnavBookingBadge');
+      if (s.pending > 0) {
+        pb.textContent = s.pending; pb.classList.remove('hidden');
+        bb.textContent = s.pending; bb.classList.remove('hidden');
+      } else {
+        pb.classList.add('hidden'); bb.classList.add('hidden');
+      }
+    }
+
+    function statusBadge(status) {
+      const s = (status || 'PENDING').toUpperCase();
+      const map = {
+        PENDING: { cls: 'badge-amber', label: 'Pending' },
+        CONFIRMED: { cls: 'badge-green', label: 'Confirmed' },
+        REJECTED: { cls: 'badge-red', label: 'Rejected' },
+        CANCELLED: { cls: 'badge-gray', label: 'Cancelled' },
+        AVAILABLE: { cls: 'badge-green', label: 'Available' },
+        BOOKED: { cls: 'badge-red', label: 'Booked' }
+      };
+      const x = map[s] || { cls: 'badge-gray', label: s };
+      return `<span class="badge ${x.cls}">${escapeHtml(x.label)}</span>`;
+    }
+
+    function loadSettings() {
+      onValue(dbRef(rtdb, 'site_settings/main'), (snap) => {
+        if (snap.exists()) { State.settings = snap.val(); renderContentForm(); }
+      }, (e) => console.warn('Settings load failed:', e));
+    }
+
+    /* Gallery load has been removed — photos are now HTML-only. */
+
+    function loadBookings() {
+      onValue(dbRef(rtdb, 'booking_requests'), (snap) => {
+        const items = [];
+        snap.forEach((child) => { items.push({ id: child.key, ...child.val() }); });
+        items.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        State.bookings = items;
+        renderBookings(); renderRecentRequests(); renderStats();
+      }, (e) => {
+        console.error('Bookings load failed:', e);
+        $('#bookingsContainer').innerHTML = `<div class="card"><div class="empty"><div class="empty-icon">⚠</div><h4>Could not load bookings</h4><p>${escapeHtml(e.message)}</p></div></div>`;
+      });
+    }
+
+    function loadBookingDates() {
+      onValue(dbRef(rtdb, 'booking_dates'), (snap) => {
+        const items = [];
+        snap.forEach((child) => { items.push({ id: child.key, eventDate: child.key, ...child.val() }); });
+        items.sort((a, b) => (a.eventDate || '').localeCompare(b.eventDate || ''));
+        State.bookingDates = items;
+        renderCalendar(); renderDatesList(); renderUpcomingEvents(); renderStats();
+      }, (e) => console.error('Dates load failed:', e));
+    }
+
+    /* ==========================================================
+       Overview renderers
+    ========================================================== */
+    function renderRecentRequests() {
+      const container = $('#recentRequests');
+      const recent = State.bookings.slice(0, 5);
+      if (!recent.length) {
+        container.innerHTML = `<div class="empty"><div class="empty-icon">✦</div><h4>No requests yet</h4><p>Booking requests from the public site will appear here.</p></div>`;
+        return;
+      }
+      container.innerHTML = `
+        <div class="table-wrap" style="border:none;background:transparent;">
+          <table style="min-width:auto;">
+            <thead><tr><th>Customer</th><th>Event</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              ${recent.map(r => `
+                <tr data-request-id="${escapeHtml(r.id)}">
+                  <td><div class="cell-primary">${escapeHtml(r.fullName || '—')}</div>
+                      <div class="cell-secondary">${escapeHtml(r.city || r.eventLocation || '')}</div></td>
+                  <td><div class="cell-primary">${escapeHtml(r.eventDate || '—')}</div>
+                      <div class="cell-secondary">${escapeHtml(r.eventType || '')}</div></td>
+                  <td>${statusBadge(r.status)}</td>
+                  <td style="text-align:right;"><span class="muted" style="font-size:0.72rem;">${timeAgo(r.createdAt)}</span></td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+      $$('tr[data-request-id]', container).forEach(tr => {
+        tr.addEventListener('click', () => openRequestDetail(tr.dataset.requestId));
+      });
+    }
+
+    function renderUpcomingEvents() {
+      const container = $('#upcomingEvents');
+      const todayKey = dateKey(new Date());
+      const upcoming = State.bookingDates
+        .filter(d => d.eventDate >= todayKey && (d.status || '').toUpperCase() === 'BOOKED')
+        .slice(0, 5);
+      if (!upcoming.length) {
+        container.innerHTML = `<div class="empty"><div class="empty-icon">▤</div><h4>No upcoming booked events</h4><p>Confirmed bookings will appear here.</p></div>`;
+        return;
+      }
+      container.innerHTML = `
+        <div style="padding:8px 4px;">
+          ${upcoming.map(d => `
+            <div class="log-item">
+              <div class="log-icon" style="background:var(--red-bg);border-color:rgba(248,113,113,0.2);color:var(--red);">●</div>
+              <div class="log-body">
+                <div class="log-action">${escapeHtml(prettyDate(d.eventDate))}</div>
+                <div class="log-meta">
+                  <span>${escapeHtml(d.eventType || 'Event')}</span>
+                  ${d.location ? `<span>· ${escapeHtml(d.location)}</span>` : ''}
+                  <span class="badge badge-red">Booked</span>
+                </div>
+              </div>
+            </div>`).join('')}
+        </div>`;
+    }
+
+    /* ==========================================================
+       Bookings — with Delete
+    ========================================================== */
+    function renderBookings() {
+      const container = $('#bookingsContainer');
+      const items = State.bookingFilter === 'all'
+        ? State.bookings
+        : State.bookings.filter(b => (b.status || 'PENDING').toUpperCase() === State.bookingFilter);
+      if (!items.length) {
+        container.innerHTML = `<div class="card"><div class="empty"><div class="empty-icon">✦</div><h4>No booking requests</h4><p>${State.bookingFilter === 'all' ? 'New requests from the public site will appear here.' : `No ${State.bookingFilter.toLowerCase()} requests.`}</p></div></div>`;
+        return;
+      }
+      container.innerHTML = `
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Request</th><th>Customer</th><th>Event Date</th><th>Type</th><th>Status</th><th>Submitted</th><th></th></tr></thead>
+            <tbody>
+              ${items.map(r => `
+                <tr data-request-id="${escapeHtml(r.id)}">
+                  <td><div class="cell-primary mono">${escapeHtml(r.requestCode || '—')}</div></td>
+                  <td><div class="cell-primary">${escapeHtml(r.fullName || '—')}</div>
+                      <div class="cell-secondary">${escapeHtml(r.mobile || '')}</div></td>
+                  <td><div class="cell-primary">${escapeHtml(r.eventDate || '—')}</div>
+                      ${r.eventTime ? `<div class="cell-secondary">${escapeHtml(r.eventTime)}</div>` : ''}</td>
+                  <td><div class="cell-primary">${escapeHtml(r.eventType || '')}</div>
+                      <div class="cell-secondary">${escapeHtml(r.city || r.eventLocation || '')}</div></td>
+                  <td>${statusBadge(r.status)}</td>
+                  <td><div class="cell-secondary">${timeAgo(r.createdAt)}</div></td>
+                  <td>
+                    <div class="cell-actions">
+                      <button class="btn btn-danger btn-sm btn-icon" data-delete-booking="${escapeHtml(r.id)}" title="Delete booking">🗑</button>
+                    </div>
+                  </td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+      $$('tr[data-request-id]', container).forEach(tr => {
+        tr.addEventListener('click', (e) => {
+          if (e.target.closest('[data-delete-booking]')) return;
+          openRequestDetail(tr.dataset.requestId);
+        });
+      });
+      container.querySelectorAll('[data-delete-booking]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          confirmDeleteBooking(btn.dataset.deleteBooking);
+        });
+      });
+    }
+
+    function confirmDeleteBooking(id) {
+      const r = State.bookings.find(x => x.id === id);
+      if (!r) return;
+      confirmDialog({
+        title: 'Delete this booking request?',
+        message: `"${r.fullName || 'Booking'}" (${r.requestCode || ''}) on ${r.eventDate || '—'} will be permanently deleted.`,
+        confirmText: 'Delete',
+        danger: true,
+        async onConfirm() {
+          try {
+            await remove(dbRef(rtdb, `booking_requests/${id}`));
+            const otherBookings = State.bookings.filter(b => b.id !== id && b.eventDate === r.eventDate);
+            if (!otherBookings.some(b => (b.status || '').toUpperCase() === 'CONFIRMED')) {
+              const snap = await get(dbRef(rtdb, `booking_dates/${r.eventDate}`));
+              if (snap.exists()) {
+                const data = snap.val() || {};
+                if (data.sourceRequestId === id || (data.status || '').toUpperCase() === 'PENDING') {
+                  await update(dbRef(rtdb, `booking_dates/${r.eventDate}`), {
+                    status: 'AVAILABLE',
+                    updatedAt: Date.now()
+                  });
+                }
+              }
+            }
+            Toast.success('Booking deleted');
+            logActivity('Booking deleted', { code: r.requestCode, name: r.fullName });
+          } catch (e) {
+            console.error(e);
+            Toast.error('Failed to delete booking.');
+          }
+        }
+      });
+    }
+
+    function openRequestDetail(id) {
+      const r = State.bookings.find(x => x.id === id);
+      if (!r) return;
+      const status = (r.status || 'PENDING').toUpperCase();
+      const wa = String(r.whatsapp || r.mobile || '').replace(/\D/g, '');
+
+      Modal.open({
+        title: `Request ${r.requestCode || ''}`, size: 'lg',
+        body: `
+          <div class="detail-grid two">
+            <div class="detail-item"><div class="detail-label">Customer</div><div class="detail-value">${escapeHtml(r.fullName || '—')}</div></div>
+            <div class="detail-item"><div class="detail-label">Status</div><div class="detail-value">${statusBadge(status)}</div></div>
+            <div class="detail-item"><div class="detail-label">Mobile</div><div class="detail-value"><a href="tel:${escapeHtml(r.mobile || '')}" style="color:var(--gold);">${escapeHtml(r.mobile || '—')}</a></div></div>
+            <div class="detail-item"><div class="detail-label">WhatsApp</div><div class="detail-value">${wa ? `<a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener" style="color:var(--gold);">${escapeHtml(r.whatsapp || r.mobile)}</a>` : '—'}</div></div>
+            <div class="detail-item"><div class="detail-label">Event Date</div><div class="detail-value">${escapeHtml(r.eventDate || '—')}</div></div>
+            <div class="detail-item"><div class="detail-label">Event Time</div><div class="detail-value">${escapeHtml(r.eventTime || '—')}</div></div>
+            <div class="detail-item"><div class="detail-label">Event Type</div><div class="detail-value">${escapeHtml(r.eventType || '—')}</div></div>
+            <div class="detail-item"><div class="detail-label">Location</div><div class="detail-value">${escapeHtml(r.eventLocation || '—')}</div></div>
+            <div class="detail-item"><div class="detail-label">City / Village</div><div class="detail-value">${escapeHtml(r.city || '—')}</div></div>
+            <div class="detail-item"><div class="detail-label">Submitted</div><div class="detail-value">${escapeHtml(timeAgo(r.createdAt))}</div></div>
+          </div>
+          ${r.message ? `<div style="margin-top:16px;"><div class="detail-label" style="margin-bottom:8px;">Customer Message</div>
+            <div class="detail-item" style="background:rgba(255,255,255,0.02);">
+              <div class="detail-value" style="font-weight:400;font-size:0.86rem;">${escapeHtml(r.message)}</div>
+            </div></div>` : ''}
+          <div style="margin-top:16px;">
+            <label class="field-label" for="adminNotes">Internal Admin Notes <span class="muted" style="font-weight:400;text-transform:none;letter-spacing:0;">(never shown publicly)</span></label>
+            <textarea class="textarea" id="adminNotes" placeholder="Add private notes about this booking...">${escapeHtml(r.adminNotes || '')}</textarea>
+          </div>
+          <div style="margin-top:16px;">
+            <label class="field-label">Update Status</label>
+            <div class="row wrap" style="gap:8px;">
+              <button class="btn btn-sm ${status === 'PENDING' ? 'btn-primary' : 'btn-secondary'}" data-set-status="PENDING">Pending</button>
+              <button class="btn btn-sm ${status === 'CONFIRMED' ? 'btn-primary' : 'btn-secondary'}" data-set-status="CONFIRMED">Confirm</button>
+              <button class="btn btn-sm ${status === 'REJECTED' ? 'btn-danger' : 'btn-secondary'}" data-set-status="REJECTED">Reject</button>
+              <button class="btn btn-sm ${status === 'CANCELLED' ? 'btn-secondary' : 'btn-secondary'}" data-set-status="CANCELLED">Cancel</button>
+            </div>
+          </div>`,
+        foot: `<a href="tel:${escapeHtml(r.mobile || '')}" class="btn btn-secondary">Call</a>
+          <a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener" class="btn btn-secondary">WhatsApp</a>
+          <div style="flex:1;"></div>
+          <button class="btn btn-danger" id="deleteBookingBtn">Delete</button>
+          <button class="btn btn-primary" id="saveRequestBtn">Save</button>`,
+        onMount(body, footEl) {
+          body.querySelectorAll('[data-set-status]').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const s = btn.dataset.setStatus;
+              body.querySelectorAll('[data-set-status]').forEach(b => {
+                b.className = 'btn btn-sm ' + (b.dataset.setStatus === s
+                  ? (s === 'REJECTED' ? 'btn-danger' : 'btn-primary') : 'btn-secondary');
+              });
+              body.dataset.pendingStatus = s;
+            });
+          });
+
+          footEl.querySelector('#deleteBookingBtn').addEventListener('click', () => {
+            Modal.close();
+            confirmDeleteBooking(r.id);
+          });
+
+          footEl.querySelector('#saveRequestBtn').addEventListener('click', async () => {
+            const saveBtn = footEl.querySelector('#saveRequestBtn');
+            const newStatus = (body.dataset.pendingStatus || status).toUpperCase();
+            const notes = body.querySelector('#adminNotes').value.trim();
+            saveBtn.disabled = true;
+            saveBtn.innerHTML = '<span class="spinner"></span> Saving…';
+
+            if (newStatus === 'CONFIRMED') {
+              try {
+                const snap = await get(dbRef(rtdb, `booking_dates/${r.eventDate}`));
+                if (snap.exists()) {
+                  const data = snap.val() || {};
+                  if ((data.status || '').toUpperCase() === 'BOOKED' && data.sourceRequestId !== r.id) {
+                    Toast.error('This date is already booked.');
+                    saveBtn.disabled = false; saveBtn.textContent = 'Save';
+                    return;
+                  }
+                }
+              } catch (e) { console.warn('Pre-confirm check failed:', e); }
+            }
+
+            try {
+              await update(dbRef(rtdb, `booking_requests/${r.id}`), {
+                status: newStatus, adminNotes: notes, updatedAt: Date.now()
+              });
+              Object.assign(r, { status: newStatus, adminNotes: notes });
+
+              if (newStatus === 'CONFIRMED') {
+                const existing = await get(dbRef(rtdb, `booking_dates/${r.eventDate}`));
+                await set(dbRef(rtdb, `booking_dates/${r.eventDate}`), {
+                  status: 'BOOKED',
+                  eventType: r.eventType || null,
+                  location: r.eventLocation || r.city || null,
+                  sourceRequestId: r.id,
+                  createdAt: existing.val()?.createdAt || Date.now(),
+                  updatedAt: Date.now()
+                });
+                logActivity('Booking confirmed', { code: r.requestCode, date: r.eventDate });
+              } else if (newStatus === 'REJECTED' || newStatus === 'CANCELLED') {
+                const otherConfirmed = State.bookings.some(b =>
+                  b.id !== r.id && (b.status || '').toUpperCase() === 'CONFIRMED' && b.eventDate === r.eventDate
+                );
+                if (!otherConfirmed) {
+                  const snap = await get(dbRef(rtdb, `booking_dates/${r.eventDate}`));
+                  if (snap.exists()) {
+                    const data = snap.val() || {};
+                    if (data.sourceRequestId === r.id || (data.status || '').toUpperCase() === 'BOOKED') {
+                      await update(dbRef(rtdb, `booking_dates/${r.eventDate}`), { status: 'AVAILABLE', updatedAt: Date.now() });
+                    }
+                  }
+                }
+                logActivity(`Booking ${newStatus.toLowerCase()}`, { code: r.requestCode });
+              } else {
+                logActivity('Booking status updated', { code: r.requestCode, status: newStatus });
+              }
+
+              Toast.success('Request updated');
+              Modal.close();
+            } catch (e) {
+              console.error(e);
+              Toast.error('Could not update request.');
+              saveBtn.disabled = false; saveBtn.textContent = 'Save';
+            }
+          });
+        }
+      });
+    }
+
+    /* ==========================================================
+       Calendar
+    ========================================================== */
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    function renderCalendar() {
+      const grid = $('#calGrid'), label = $('#calLabel');
+      if (!grid || !label) return;
+      const { year, month } = State.calendar;
+      label.textContent = `${MONTHS[month]} ${year}`;
+      const firstDow = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const daysInPrev = new Date(year, month, 0).getDate();
+      const todayKey = dateKey(new Date());
+
+      const statusMap = new Map();
+      State.bookingDates.forEach(d => { if (d.eventDate) statusMap.set(d.eventDate, (d.status || 'AVAILABLE').toUpperCase()); });
+
+      const parts = [];
+      DOW.forEach(d => parts.push(`<div class="cal-dow">${d}</div>`));
+      for (let i = firstDow - 1; i >= 0; i--) parts.push(`<div class="cal-day other">${daysInPrev - i}</div>`);
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const key = `${year}-${pad(month + 1)}-${pad(d)}`;
+        const status = statusMap.get(key) || 'AVAILABLE';
+        const cls = ['cal-day'];
+        if (key === todayKey) cls.push('today');
+        if (status === 'BOOKED') cls.push('booked');
+        else if (status === 'PENDING') cls.push('pending');
+        else cls.push('available');
+        parts.push(`<div class="${cls.join(' ')}" data-date="${key}" title="${key} — ${status}">${d}</div>`);
+      }
+
+      const totalCells = firstDow + daysInMonth;
+      const remaining = (7 - (totalCells % 7)) % 7;
+      for (let i = 1; i <= remaining; i++) parts.push(`<div class="cal-day other">${i}</div>`);
+
+      grid.innerHTML = parts.join('');
+      $$('.cal-day[data-date]', grid).forEach(day => {
+        day.addEventListener('click', () => openDateEditor(day.dataset.date));
+      });
+    }
+
+    function renderDatesList() {
+      const container = $('#datesContainer');
+      if (!State.bookingDates.length) {
+        container.innerHTML = `<div class="card"><div class="empty"><div class="empty-icon">▤</div><h4>No dates configured</h4><p>Add a date to manage availability on the public site.</p><button class="btn btn-primary" id="emptyAddDateBtn">+ Add Date</button></div></div>`;
+        const b = $('#emptyAddDateBtn'); if (b) b.addEventListener('click', () => openDateEditor());
+        return;
+      }
+      const sorted = [...State.bookingDates].sort((a, b) => (a.eventDate || '').localeCompare(b.eventDate || ''));
+      container.innerHTML = `
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Status</th><th>Event Type</th><th>Location</th><th></th></tr></thead>
+            <tbody>
+              ${sorted.map(d => `
+                <tr data-date-id="${escapeHtml(d.id)}">
+                  <td><div class="cell-primary">${escapeHtml(d.eventDate ? prettyDate(d.eventDate) : '—')}</div></td>
+                  <td>${statusBadge(d.status)}</td>
+                  <td>${escapeHtml(d.eventType || '—')}</td>
+                  <td>${escapeHtml(d.location || '—')}</td>
+                  <td><div class="cell-actions">
+                    <button class="btn btn-secondary btn-sm" data-action="edit" data-id="${escapeHtml(d.id)}">Edit</button>
+                    <button class="btn btn-danger btn-sm btn-icon" data-action="delete" data-id="${escapeHtml(d.id)}" title="Delete">🗑</button>
+                  </div></td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+      container.querySelectorAll('[data-action="edit"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const rec = State.bookingDates.find(x => x.id === btn.dataset.id);
+          if (rec) openDateEditor(rec.eventDate, rec);
+        });
+      });
+      container.querySelectorAll('[data-action="delete"]').forEach(btn => {
+        btn.addEventListener('click', (e) => { e.stopPropagation(); confirmDeleteDate(btn.dataset.id); });
+      });
+    }
+
+    function openDateEditor(dateKeyArg, existing = null) {
+      const todayKey = dateKey(new Date());
+      const isNew = !existing;
+      const initialDate = dateKeyArg || existing?.eventDate || todayKey;
+
+      Modal.open({
+        title: isNew ? 'Add Booking Date' : 'Edit Booking Date',
+        body: `
+          <div class="field"><label class="field-label" for="dateKey">Date <span class="req">*</span></label>
+            <input type="date" class="input" id="dateKey" value="${escapeHtml(initialDate)}" ${!isNew ? 'disabled' : ''} /></div>
+          <div class="field"><label class="field-label" for="dateStatus">Status <span class="req">*</span></label>
+            <select class="select" id="dateStatus">
+              <option value="AVAILABLE" ${(existing?.status || '').toUpperCase() === 'AVAILABLE' ? 'selected' : ''}>Available</option>
+              <option value="PENDING" ${(existing?.status || '').toUpperCase() === 'PENDING' ? 'selected' : ''}>Pending</option>
+              <option value="BOOKED" ${(existing?.status || '').toUpperCase() === 'BOOKED' ? 'selected' : ''}>Booked</option>
+            </select></div>
+          <div class="field"><label class="field-label" for="dateEventType">Event Type</label><input type="text" class="input" id="dateEventType" value="${escapeHtml(existing?.eventType || '')}" placeholder="Wedding, Procession..." /></div>
+          <div class="field"><label class="field-label" for="dateLocation">Location</label><input type="text" class="input" id="dateLocation" value="${escapeHtml(existing?.location || '')}" placeholder="Deola" /></div>
+          <div class="field"><label class="field-label" for="dateNotes">Notes (internal only)</label><textarea class="textarea" id="dateNotes" placeholder="Private notes...">${escapeHtml(existing?.notes || '')}</textarea></div>`,
+        foot: `${!isNew ? '<button class="btn btn-danger" id="deleteDateBtn">Delete</button>' : ''}
+          <div style="flex:1;"></div>
+          <button class="btn btn-secondary" id="cancelDateBtn">Cancel</button>
+          <button class="btn btn-primary" id="saveDateBtn">${isNew ? 'Add Date' : 'Save'}</button>`,
+        onMount(body, footEl) {
+          footEl.querySelector('#cancelDateBtn').addEventListener('click', () => Modal.close());
+          if (!isNew) footEl.querySelector('#deleteDateBtn').addEventListener('click', () => { Modal.close(); confirmDeleteDate(existing.id); });
+
+          footEl.querySelector('#saveDateBtn').addEventListener('click', async () => {
+            const dateVal = body.querySelector('#dateKey').value;
+            const status = body.querySelector('#dateStatus').value;
+            const eventType = body.querySelector('#dateEventType').value.trim();
+            const location = body.querySelector('#dateLocation').value.trim();
+            const notes = body.querySelector('#dateNotes').value.trim();
+            if (!dateVal) { Toast.error('Please select a date.'); return; }
+
+            const btn = footEl.querySelector('#saveDateBtn');
+            btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Saving…';
+
+            try {
+              if (status === 'BOOKED') {
+                const snap = await get(dbRef(rtdb, `booking_dates/${dateVal}`));
+                if (snap.exists()) {
+                  const data = snap.val() || {};
+                  if ((data.status || '').toUpperCase() === 'BOOKED' && (!existing || existing.eventDate !== dateVal)) {
+                    Toast.error('This date is already booked.');
+                    btn.disabled = false; btn.textContent = isNew ? 'Add Date' : 'Save';
+                    return;
+                  }
+                }
+              }
+
+              const payload = {
+                status, eventType: eventType || null, location: location || null,
+                notes: notes || null, updatedAt: Date.now()
+              };
+              if (isNew) payload.createdAt = Date.now();
+
+              await update(dbRef(rtdb, `booking_dates/${dateVal}`), payload);
+
+              Toast.success(isNew ? 'Date added' : 'Date updated');
+              logActivity(isNew ? 'Booking date added' : 'Booking date changed', { date: dateVal, status });
+              Modal.close();
+            } catch (e) {
+              console.error(e);
+              Toast.error('Could not save date.');
+              btn.disabled = false; btn.textContent = isNew ? 'Add Date' : 'Save';
+            }
+          });
+        }
+      });
+    }
+
+    function confirmDeleteDate(id) {
+      const rec = State.bookingDates.find(d => d.id === id);
+      if (!rec) return;
+      confirmDialog({
+        title: 'Delete this date?',
+        message: `${rec.eventDate ? prettyDate(rec.eventDate) : ''} will be removed from the calendar.`,
+        confirmText: 'Delete', danger: true,
+        async onConfirm() {
+          try {
+            await remove(dbRef(rtdb, `booking_dates/${id}`));
+            Toast.success('Date deleted');
+            logActivity('Booking date deleted', { date: rec.eventDate });
+          } catch (e) { Toast.error('Failed to delete date.'); }
+        }
+      });
+    }
+
+    /* ==========================================================
+       Orders
+    ========================================================== */
+    function loadOrdersAdmin() {
+      onValue(dbRef(rtdb, 'orders'), (snap) => {
+        const items = [];
+        snap.forEach((c) => items.push({ id: c.key, ...c.val() }));
+        items.sort((a, b) => (a.eventDate || '').localeCompare(b.eventDate || ''));
+        State.orders = items;
+        renderOrdersAdmin();
+      }, (e) => console.error('Orders load failed:', e));
+    }
+
+    function renderOrdersAdmin() {
+      const container = document.getElementById('ordersAdminContainer');
+      if (!container) return;
+
+      const items = State.orders || [];
+      if (!items.length) {
+        container.innerHTML = `
+          <div class="card">
+            <div class="empty">
+              <div class="empty-icon">📋</div>
+              <h4>No orders yet</h4>
+              <p>Add an order to schedule it. Confirmed orders appear publicly.</p>
+              <button class="btn btn-primary" id="emptyAddOrderBtn">+ Add Order</button>
+            </div>
+          </div>`;
+        const b = document.getElementById('emptyAddOrderBtn');
+        if (b) b.addEventListener('click', () => openOrderEditor());
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Village</th>
+                <th>Name / Details</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items.map(o => `
+                <tr data-order-id="${escapeHtml(o.id)}">
+                  <td>
+                    <div class="cell-primary">
+                      ${o.status === 'CONFIRMED'
+                        ? `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:6px;box-shadow:0 0 8px rgba(248,113,113,0.7);"></span>`
+                        : ''}${escapeHtml(o.eventDate ? prettyDate(o.eventDate) : '—')}
+                    </div>
+                  </td>
+                  <td>${escapeHtml(o.village || '—')}</td>
+                  <td>
+                    <div class="cell-primary">${escapeHtml(o.name || '—')}</div>
+                    ${o.details ? `<div class="cell-secondary">${escapeHtml(o.details)}</div>` : ''}
+                  </td>
+                  <td>${statusBadge(o.status)}</td>
+                  <td>
+                    <div class="cell-actions">
+                      <button class="btn btn-secondary btn-sm" data-action="edit" data-id="${escapeHtml(o.id)}">Edit</button>
+                      <button class="btn btn-danger btn-sm btn-icon" data-action="delete" data-id="${escapeHtml(o.id)}" title="Delete">🗑</button>
+                    </div>
+                  </td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+
+      container.querySelectorAll('[data-action="edit"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const rec = State.orders.find(x => x.id === btn.dataset.id);
+          if (rec) openOrderEditor(rec);
+        });
+      });
+      container.querySelectorAll('[data-action="delete"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          confirmDeleteOrder(btn.dataset.id);
+        });
+      });
+    }
+
+    function openOrderEditor(existing = null) {
+      const isNew = !existing;
+      const todayKey = dateKey(new Date());
+
+      Modal.open({
+        title: isNew ? 'Add Order' : 'Edit Order',
+        body: `
+          <div class="field">
+            <label class="field-label" for="ordName">Customer / Order Name <span class="req">*</span></label>
+            <input type="text" class="input" id="ordName"
+                   value="${escapeHtml(existing?.name || '')}"
+                   placeholder="e.g. ABC Wedding" />
+          </div>
+          <div class="field">
+            <label class="field-label" for="ordDate">Date <span class="req">*</span></label>
+            <input type="date" class="input" id="ordDate"
+                   value="${escapeHtml(existing?.eventDate || todayKey)}" />
+          </div>
+          <div class="field">
+            <label class="field-label" for="ordVillage">Village <span class="req">*</span></label>
+            <input type="text" class="input" id="ordVillage"
+                   value="${escapeHtml(existing?.village || '')}"
+                   placeholder="e.g. Deola" />
+          </div>
+          <div class="field">
+            <label class="field-label" for="ordDetails">Order / Event Details</label>
+            <textarea class="textarea" id="ordDetails"
+                      placeholder="Any additional information...">${escapeHtml(existing?.details || '')}</textarea>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ordStatus">Status</label>
+            <select class="select" id="ordStatus">
+              <option value="PENDING"   ${(existing?.status || '') === 'PENDING'   ? 'selected' : ''}>Pending</option>
+              <option value="CONFIRMED" ${(existing?.status || '') === 'CONFIRMED' ? 'selected' : ''}>Confirmed</option>
+              <option value="CANCELLED" ${(existing?.status || '') === 'CANCELLED' ? 'selected' : ''}>Cancelled</option>
+            </select>
+            <div class="hint">Confirmed orders are shown publicly with a red indicator.</div>
+          </div>
+        `,
+        foot: `
+          ${!isNew ? '<button class="btn btn-danger" id="deleteOrderBtn">Delete</button>' : ''}
+          <div style="flex:1;"></div>
+          <button class="btn btn-secondary" id="cancelOrderBtn">Cancel</button>
+          <button class="btn btn-primary" id="saveOrderBtn">${isNew ? 'Save' : 'Save Changes'}</button>
+        `,
+        onMount(body, footEl) {
+          footEl.querySelector('#cancelOrderBtn').addEventListener('click', () => Modal.close());
+          if (!isNew) {
+            footEl.querySelector('#deleteOrderBtn').addEventListener('click', () => {
+              Modal.close();
+              confirmDeleteOrder(existing.id);
+            });
+          }
+
+          footEl.querySelector('#saveOrderBtn').addEventListener('click', async () => {
+            const name = body.querySelector('#ordName').value.trim();
+            const eventDate = body.querySelector('#ordDate').value;
+            const village = body.querySelector('#ordVillage').value.trim();
+            const details = body.querySelector('#ordDetails').value.trim();
+            const status = body.querySelector('#ordStatus').value;
+
+            if (!name)      { Toast.error('Please enter a name.');    return; }
+            if (!eventDate) { Toast.error('Please select a date.');   return; }
+            if (!village)   { Toast.error('Please enter a village.'); return; }
+
+            const btn = footEl.querySelector('#saveOrderBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> Saving…';
+
+            const payload = {
+              name, eventDate, village,
+              details: details || null,
+              status,
+              updatedAt: Date.now()
+            };
+            if (isNew) payload.createdAt = Date.now();
+
+            try {
+              if (isNew) {
+                const newRef = push(dbRef(rtdb, 'orders'));
+                await set(newRef, payload);
+                Toast.success('Order saved');
+                logActivity('Order added', { name, date: eventDate, village });
+              } else {
+                await update(dbRef(rtdb, `orders/${existing.id}`), payload);
+                Toast.success('Order updated');
+                logActivity('Order updated', { name, date: eventDate, village });
+              }
+              Modal.close();
+            } catch (e) {
+              console.error(e);
+              Toast.error('Could not save order.');
+              btn.disabled = false;
+              btn.textContent = isNew ? 'Save' : 'Save Changes';
+            }
+          });
+        }
+      });
+    }
+
+    function confirmDeleteOrder(id) {
+      const rec = (State.orders || []).find(o => o.id === id);
+      if (!rec) return;
+      confirmDialog({
+        title: 'Delete this order?',
+        message: `"${rec.name || 'Order'}" on ${rec.eventDate ? prettyDate(rec.eventDate) : '—'} will be removed.`,
+        confirmText: 'Delete',
+        danger: true,
+        async onConfirm() {
+          try {
+            await remove(dbRef(rtdb, `orders/${id}`));
+            Toast.success('Order deleted');
+            logActivity('Order deleted', { name: rec.name, date: rec.eventDate });
+          } catch (e) { Toast.error('Failed to delete order.'); }
+        }
+      });
+    }
+
+    /* ==========================================================
+       Content form
+    ========================================================== */
+    function renderContentForm() {
+      const s = State.settings || {};
+      const set = (id, v) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = v || ''; };
+      set('cBusinessName', s.businessName); set('cPhone', s.phone); set('cWhatsapp', s.whatsapp);
+      set('cAddress', s.address); set('cAbout', s.aboutText); set('cInstagram', s.instagram);
+      set('cFacebook', s.facebook); set('cYoutube', s.youtube);
+      set('cHeroMedia', s.heroMediaUrl); set('cLogo', s.logoUrl);
+      updateAboutCount();
+    }
+
+    function updateAboutCount() { const v = $('#cAbout').value || ''; $('#aboutCount').textContent = v.length; }
+
+    async function saveContent(e) {
+      e.preventDefault();
+      const btn = $('#saveContentBtn');
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Saving…';
+
+      const patch = {
+        businessName: $('#cBusinessName').value.trim(),
+        phone: $('#cPhone').value.trim(),
+        whatsapp: $('#cWhatsapp').value.trim(),
+        address: $('#cAddress').value.trim(),
+        aboutText: $('#cAbout').value.trim(),
+        instagram: $('#cInstagram').value.trim(),
+        facebook: $('#cFacebook').value.trim(),
+        youtube: $('#cYoutube').value.trim(),
+        heroMediaUrl: $('#cHeroMedia').value.trim(),
+        logoUrl: $('#cLogo').value.trim(),
+        updatedAt: Date.now()
+      };
+
+      try {
+        await update(dbRef(rtdb, 'site_settings/main'), patch);
+        State.settings = { ...State.settings, ...patch };
+        Toast.success('Content saved');
+        logActivity('Website settings updated', {});
+      } catch (e) {
+        console.error(e);
+        Toast.error('Could not save content settings.');
+      }
+
+      btn.disabled = false; btn.textContent = 'Save Content';
+    }
+
+    /* ==========================================================
+       Activity log
+    ========================================================== */
+    function renderActivity() {
+      const container = $('#activityContainer');
+      container.innerHTML = '<div class="empty"><div class="spinner"></div></div>';
+      onValue(dbRef(rtdb, 'admin_activity_logs'), (snap) => {
+        const items = [];
+        snap.forEach((c) => items.push({ id: c.key, ...c.val() }));
+        items.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        State.activity = items;
+
+        if (!items.length) {
+          container.innerHTML = `<div class="empty"><div class="empty-icon">≣</div><h4>No activity yet</h4><p>Actions performed in the dashboard will appear here.</p></div>`;
+          return;
+        }
+        const icons = {
+          'Booking confirmed':'✓','Booking rejected':'✕','Booking cancelled':'⊗','Booking status updated':'↻','Booking deleted':'🗑',
+          'Booking date added':'＋','Booking date changed':'↻','Booking date deleted':'－','Website settings updated':'⚙',
+          'Order added':'📋','Order updated':'✎','Order deleted':'🗑'
+        };
+        container.innerHTML = `
+          <div class="log-list">
+            ${items.slice(0, 100).map(a => `
+              <div class="log-item">
+                <div class="log-icon">${icons[a.action] || '•'}</div>
+                <div class="log-body">
+                  <div class="log-action">${escapeHtml(a.action || 'Action')}</div>
+                  <div class="log-meta">
+                    <span>${escapeHtml(a.adminEmail || 'system')}</span>
+                    <span>· ${escapeHtml(timeAgo(a.createdAt))}</span>
+                    ${a.details && a.details.code ? `<span>· ${escapeHtml(a.details.code)}</span>` : ''}
+                  </div>
+                </div>
+              </div>`).join('')}
+          </div>`;
+      }, (e) => {
+        container.innerHTML = `<div class="empty"><div class="empty-icon">⚠</div><h4>Could not load activity</h4></div>`;
+      });
+    }
+
+    /* ==========================================================
+       Dashboard loader
+    ========================================================== */
+    const Dashboard = {
+      async loadAll() {
+        loadSettings();
+        loadBookings();
+        loadBookingDates();
+        loadOrdersAdmin();
+      },
+      async refresh() {
+        Toast.info('Refreshing…');
+        renderStats(); renderRecentRequests();
+        renderUpcomingEvents(); renderBookings();
+        renderCalendar(); renderDatesList(); renderOrdersAdmin();
+        Toast.success('Data refreshed');
+      }
+    };
+
+    /* ==========================================================
+       Wire events
+    ========================================================== */
+    function wireEvents() {
+      $('#refreshBtn').addEventListener('click', () => Dashboard.refresh());
+
+      $$('#bookingTabs .tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          $$('#bookingTabs .tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          State.bookingFilter = tab.dataset.bstatus;
+          renderBookings();
+        });
+      });
+
+      $('#addDateBtn').addEventListener('click', () => openDateEditor());
+
+      const addOrderBtn = document.getElementById('addOrderBtn');
+      if (addOrderBtn) addOrderBtn.addEventListener('click', () => openOrderEditor());
+
+      $('#calPrev').addEventListener('click', () => {
+        State.calendar.month--;
+        if (State.calendar.month < 0) { State.calendar.month = 11; State.calendar.year--; }
+        renderCalendar();
+      });
+      $('#calNext').addEventListener('click', () => {
+        State.calendar.month++;
+        if (State.calendar.month > 11) { State.calendar.month = 0; State.calendar.year++; }
+        renderCalendar();
+      });
+
+      $('#contentForm').addEventListener('submit', saveContent);
+      $('#cAbout').addEventListener('input', updateAboutCount);
+    }
+
+    /* ==========================================================
+       Bootstrap
+    ========================================================== */
+    function bootstrap() {
+      Nav.init();
+      Modal.init();
+      Auth.init();
+      wireEvents();
+      renderContentForm();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bootstrap);
+    } else {
+      bootstrap();
+    }
+  </script>
+</body>
+</html>
